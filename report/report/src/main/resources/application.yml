@@ -1,6 +1,9 @@
+
 spring:
   application:
-    name: counterpartapplication
+    name: reportapplication
+  main:
+    web-application-type: reactive
   jpa:
     database: POSTGRESQL
     open-in-view: false
@@ -31,4 +34,5 @@ spring:
 springdoc:
   api-docs:
     path: /index
-
+server:
+  port: 8084
