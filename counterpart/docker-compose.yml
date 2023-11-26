@@ -1,0 +1,18 @@
+version: "1.0"
+services:
+  counterpart:
+    container_name: counterpart-app
+    image: counterpart-app:1.0
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+  postgres:
+    container_name: postgresql
+    image: postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=counterpart
+    ports:
+      - "5432:5432"

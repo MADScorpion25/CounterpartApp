@@ -1,0 +1,36 @@
+databaseChangeLog:
+  - changeSet:
+      id: counterpart-table
+      author: scorpion-25
+      changes:
+        - createTable:
+            tableName: counterpart
+            columns:
+              - column:
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: id
+                  name: id
+                  type: UUID
+              - column:
+                  constraints:
+                    nullable: false
+                  name: partner_name
+                  type: VARCHAR(250)
+              - column:
+                  constraints:
+                    nullable: false
+                    unique: true
+                  name: contract_number
+                  type: BIGINT
+              - column:
+                  constraints:
+                    nullable: false
+                  name: contract_status
+                  type: VARCHAR(250)
+              - column:
+                  constraints:
+                    nullable: false
+                  name: manager
+                  type: VARCHAR(250)
