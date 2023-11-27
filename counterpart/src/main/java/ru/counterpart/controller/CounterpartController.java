@@ -4,6 +4,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -43,5 +44,8 @@ public interface CounterpartController {
     @DeleteMapping("/counterpart/{contractNumber}")
     void deleteCounterpart(@Parameter(description = "Номер договора", required = true)
                            @Valid @NotNull @PathVariable("contractNumber") BigInteger contractNumber);
+
+    @GetMapping("/report")
+    ResponseEntity<byte[]> createReport();
 
 }
