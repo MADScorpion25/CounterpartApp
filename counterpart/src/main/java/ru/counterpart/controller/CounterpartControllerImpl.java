@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 import ru.counterpart.domain.external.Counterpart;
 import ru.counterpart.service.CounterpartService;
+import ru.counterpart.service.FileserviceAdapterService;
 import ru.counterpart.service.ReportAdapterService;
 
 import java.math.BigInteger;
@@ -15,6 +16,7 @@ import java.util.List;
 public class CounterpartControllerImpl implements CounterpartController {
     private final CounterpartService counterpartService;
     private final ReportAdapterService reportAdapterService;
+    private final FileserviceAdapterService fileserviceAdapterService;
 
     @Override
     public Counterpart createCounterpart(Counterpart counterpart) {
@@ -44,5 +46,10 @@ public class CounterpartControllerImpl implements CounterpartController {
     @Override
     public ResponseEntity<byte[]> createReport() {
         return ResponseEntity.ok(reportAdapterService.getReport());
+    }
+
+    @Override
+    public void uploadReport() {
+        fileserviceAdapterService.uploadReport();
     }
 }

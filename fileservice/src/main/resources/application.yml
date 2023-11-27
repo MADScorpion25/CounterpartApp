@@ -1,0 +1,11 @@
+minio:
+  bucket:
+    name: counterpart
+  default:
+    folder: /
+  access:
+    name: minioadmin
+    secret: minioadmin
+  url: http://localhost:9000
+server:
+  port: 8087

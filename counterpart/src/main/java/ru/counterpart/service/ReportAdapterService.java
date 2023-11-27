@@ -6,6 +6,6 @@ import org.springframework.stereotype.Service;
 public class ReportAdapterService extends AbstractFeignAdapter {
 
     public byte[] getReport() {
-        return sendRequest(byte[].class);
+        return sendGetRequest(byte[].class);
     }
 }

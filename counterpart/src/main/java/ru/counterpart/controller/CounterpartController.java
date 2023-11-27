@@ -48,4 +48,7 @@ public interface CounterpartController {
     @GetMapping("/report")
     ResponseEntity<byte[]> createReport();
 
+    @GetMapping("/upload-report")
+    void uploadReport();
+
 }
