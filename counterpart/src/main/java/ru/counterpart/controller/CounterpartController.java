@@ -6,13 +6,9 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.*;
 import ru.counterpart.domain.external.Counterpart;
+import ru.counterpart.domain.external.ManagerSetRequest;
 
 import java.math.BigInteger;
 import java.util.List;
@@ -42,10 +38,21 @@ public interface CounterpartController {
     List<Counterpart> getCounterparts();
 
     @DeleteMapping("/counterpart/{contractNumber}")
+    @Operation(summary = "Удаляет договор по номеру")
     void deleteCounterpart(@Parameter(description = "Номер договора", required = true)
                            @Valid @NotNull @PathVariable("contractNumber") BigInteger contractNumber);
 
     @GetMapping("/report")
+    @Operation(summary = "Создает отчет")
     ResponseEntity<byte[]> createReport();
 
+    @PutMapping("/counterpart/close/{contractNumber}")
+    @Operation(summary = "Закрывает договор по номеру")
+    Counterpart closeCounterpart(@Parameter(description = "Номер договора")
+                                 @Valid @NotNull @PathVariable("contractNumber") BigInteger contractNumber);
+
+    @PutMapping("/counterpart/manager")
+    @Operation(summary = "Меняет ответственного за договор")
+    Counterpart setManager(@Parameter(description = "Данные для обновления ответственного")
+                           @Validated @NotNull @RequestBody ManagerSetRequest managerSetRequest);
 }

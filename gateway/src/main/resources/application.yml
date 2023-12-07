@@ -1,2 +1,10 @@
+spring:
+  application:
+    name: gateway-app
 server:
   port: 8086
+
+routing:
+  counterpart-url: ${COUNTERPART_URL}
+  report-url: ${REPORT_URL}
+

@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 import ru.counterpart.domain.external.Counterpart;
+import ru.counterpart.domain.external.ManagerSetRequest;
 import ru.counterpart.service.CounterpartService;
 import ru.counterpart.service.ReportAdapterService;
 
@@ -44,5 +45,15 @@ public class CounterpartControllerImpl implements CounterpartController {
     @Override
     public ResponseEntity<byte[]> createReport() {
         return ResponseEntity.ok(reportAdapterService.getReport());
+    }
+
+    @Override
+    public Counterpart closeCounterpart(BigInteger contractNumber) {
+        return counterpartService.closeCounterpart(contractNumber);
+    }
+
+    @Override
+    public Counterpart setManager(ManagerSetRequest managerSetRequest) {
+        return counterpartService.updateManager(managerSetRequest);
     }
 }
