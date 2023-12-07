@@ -13,13 +13,7 @@ import java.time.LocalDateTime;
 @ControllerAdvice
 public class ExceptionController {
 
-    @ExceptionHandler({CounterpartNotFoundException.class})
-    public ResponseEntity<ErrorResponse> handleNotFoundException(RuntimeException ex) {
-        return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                .body(createResponse(ex.getMessage(), HttpStatus.NOT_FOUND));
-    }
-
-    @ExceptionHandler({CounterpartAlreadyExistsException.class})
+    @ExceptionHandler({CounterpartAlreadyExistsException.class, CounterpartNotFoundException.class})
     public ResponseEntity<ErrorResponse> handleBadRequestException(RuntimeException ex) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST)
                 .body(createResponse(ex.getMessage(), HttpStatus.BAD_REQUEST));

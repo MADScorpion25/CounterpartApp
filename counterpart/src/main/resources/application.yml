@@ -11,9 +11,9 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
   datasource:
-    url: jdbc:postgresql://postgres:5432/counterpart
-    username: postgres
-    password: postgres
+    url: ${JDBC_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
     driverClassName: org.postgresql.Driver
     type: com.zaxxer.hikari.HikariDataSource
     hikari:
