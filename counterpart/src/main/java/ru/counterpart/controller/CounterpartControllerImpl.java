@@ -3,6 +3,7 @@ package ru.counterpart.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RestController;
 import ru.counterpart.domain.external.Counterpart;
+import ru.counterpart.domain.external.ManagerSetRequest;
 import ru.counterpart.service.CounterpartService;
 
 import java.math.BigInteger;
@@ -36,5 +37,15 @@ public class CounterpartControllerImpl implements CounterpartController {
     @Override
     public void deleteCounterpart(BigInteger contractNumber) {
         counterpartService.deleteCounterpart(contractNumber);
+    }
+
+    @Override
+    public Counterpart closeCounterpart(BigInteger contractNumber) {
+        return counterpartService.closeCounterpart(contractNumber);
+    }
+
+    @Override
+    public Counterpart setManager(ManagerSetRequest managerSetRequest) {
+        return counterpartService.updateManager(managerSetRequest);
     }
 }

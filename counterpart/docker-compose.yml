@@ -2,7 +2,11 @@ version: "1.0"
 services:
   counterpart:
     container_name: counterpart-app
-    image: counterpart-app:1.0
+    image: counterpart-app:1.0.1
+    environment:
+      - JDBC_URL=jdbc:postgresql://postgres:5432/counterpart
+      - DB_USERNAME=postgres
+      - DB_PASSWORD=postgres
     ports:
       - "8080:8080"
     depends_on:
@@ -15,4 +19,4 @@ services:
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_DB=counterpart
     ports:
-      - "5432:5432"
+      - "5432"
